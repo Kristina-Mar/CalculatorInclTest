@@ -2,65 +2,47 @@ namespace Calculator.Tests
 {
     public class UnitTest1
     {
-        [Fact]
-        public void TestAdd()
+        double result = 0;
+        Calculator myCalculator = new Calculator();
+
+        [Theory]
+        [InlineData(6 ,4, 10)]
+        [InlineData(0.3, 0.2, 0.5)]
+        [InlineData(-9, 5, -4)]
+        public void TestAdd(double a, double b, double expected)
         {
-            //Arrange
-            Calculator myCalculator = new Calculator();
-
-            //Act
-            double result = myCalculator.Add(1, 5);
-
-            //Assert
-            Assert.Equal(6, result);
-
-            result = myCalculator.Add(0.3, 0.2);
-            Assert.Equal(0.5, result, 0.00001);
+            result = myCalculator.Add(a, b);
+            Assert.Equal(expected, result, 0.0001);
         }
-        [Fact]
-        public void TestSubtract()
+
+        [Theory]
+        [InlineData(6, 4, 2)]
+        [InlineData(0.3, 0.2, 0.1)]
+        [InlineData(-9, 5, -14)]
+        public void TestSubtract(double a, double b, double expected)
         {
-            //Arrange
-            Calculator myCalculator = new Calculator();
-
-            //Act
-            double result = myCalculator.Subtract(6, 4);
-
-            //Assert
-            Assert.Equal(2, result);
-
-            result = myCalculator.Subtract(0.3, 0.2);
-            Assert.Equal(0.1, result, 0.00001);
+            result = myCalculator.Subtract(a, b);
+            Assert.Equal(expected, result, 0.0001);
         }
-        [Fact]
-        public void TestMultiply()
+
+        [Theory]
+        [InlineData(6, 4, 24)]
+        [InlineData(0.3, 0.2, 0.06)]
+        [InlineData(-9, 5, -45)]
+        public void TestMultiply(double a, double b, double expected)
         {
-            //Arrange
-            Calculator myCalculator = new Calculator();
-
-            //Act
-            double result = myCalculator.Multiply(6, 4);
-
-            //Assert
-            Assert.Equal(24, result);
-
-            result = myCalculator.Multiply(0.3, 0.2);
-            Assert.Equal(0.06, result, 0.00001);
+            result = myCalculator.Multiply(a, b);
+            Assert.Equal(expected, result, 0.0001);
         }
-        [Fact]
-        public void TestDivide()
+
+        [Theory]
+        [InlineData(6, 4, 1.5)]
+        [InlineData(0.3, 0.2, 1.5)]
+        [InlineData(-9, 5, -1.8)]
+        public void TestDivide(double a, double b, double expected)
         {
-            //Arrange
-            Calculator myCalculator = new Calculator();
-
-            //Act
-            double result = myCalculator.Divide(6, 4);
-
-            //Assert
-            Assert.Equal(1.5, result);
-
-            result = myCalculator.Divide(0.3, 0.2);
-            Assert.Equal(1.5, result, 0.00001);
+            result = myCalculator.Divide(a, b);
+            Assert.Equal(expected, result, 0.0001);
         }
     }
 }
